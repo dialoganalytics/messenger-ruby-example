@@ -1,6 +1,6 @@
-# Telegram Ruby Bot
+# Facebook Messenger Ruby Bot
 
-An example telegram ruby bot. Built with [facebook-messenger](https://github.com/hyperoslo/facebook-messenger).
+An example facebook messenger ruby bot. Built with [facebook-messenger](https://github.com/hyperoslo/facebook-messenger).
 
 
 ## Getting started
