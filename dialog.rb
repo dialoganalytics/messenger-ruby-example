@@ -3,6 +3,7 @@ Dotenv.load
 
 require 'http' # https://github.com/httprb/http
 
+# Example interface to facilitate sending messages to the Dialog API.
 module Dialog
   # @param message [Facebook::Messenger::Incoming::Message, Hash]
   def track(message)
