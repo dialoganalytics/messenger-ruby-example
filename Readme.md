@@ -17,9 +17,9 @@ DIALOG_API_TOKEN=...
 DIALOG_BOT_ID=...
 ```
 
-Gt your Facebook Messenger tokens at [](). Configure your application's webhook settings in the Facebook developer dashboard to the endpoint on which this server will be listening.
+Gt your Facebook Messenger tokens at https://developers.facebook.com. Configure your application's webhook settings in the Facebook developer dashboard to the endpoint on which this server will be listening.
 
-__Local development:__ When developping locally, use a service like https://ngrok.com to expose a server running on your machine. This should be something like `https://f562681e.ngrok.io`
+__Local development:__ When developping locally, use a service like https://ngrok.com to expose a server running on your machine. This should be something like `https://f562681e.ngrok.io/webhook`
 
 ```bash
 $ ngrok http 4567
@@ -28,13 +28,7 @@ $ ngrok http 4567
 Start the bot:
 
 ```bash
-$ bundle exec rackup
-```
-
-In development, start a local tunel and :
-
-```bash
-$ ngrok http 9292
+$ bundle exec rackup -p 3456
 ```
 
 Go on [messenger.com](https://www.messenger.com), find your bot and start interacting with it.
