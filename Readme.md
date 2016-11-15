@@ -28,7 +28,7 @@ $ ngrok http 4567
 Start the bot:
 
 ```bash
-$ bundle exec rackup -p 3456
+$ bundle exec rackup -p 4567
 ```
 
 Go on [messenger.com](https://www.messenger.com), find your bot and start interacting with it.
