@@ -1,8 +1,7 @@
 require 'dotenv'
 Dotenv.load
 
-# Example interface to facilitate sending messages to the Dialog API.
-require_relative './dialog'
+require 'dialog-api'
 require 'facebook/messenger' # https://github.com/hyperoslo/facebook-messenger
 
 Facebook::Messenger.configure do |config|
