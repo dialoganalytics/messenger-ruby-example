@@ -15,19 +15,86 @@ end
 
 include Facebook::Messenger
 
-Bot.on :message do |message|
-  Dialog.track(message)
+# Helpers to handle tracking with Dialog
+class DialogMessenger
 
-  text = 'Hello, human!'
-  message_id = Bot.deliver(recipient: message.sender, message: { text: text })
+  def initialize(client)
+    @client = client
+  end
 
-  params = {
-    to: message.sender,
-    sent_at: Time.now,
-    distinct_id: message_id,
-    properties: {
-      text: text
+  # @param message [Facebook::Messenger::Incoming]
+  def incoming(message)
+    payload = {
+      message: {
+        distinct_id: message.id,
+        sent_at: message.sent_at.to_f,
+        properties: {
+          text: message.text
+        },
+      },
+      creator: {
+        distinct_id: message.sender['id'],
+        type: 'interlocutor'
+      }
+    }.deep_merge(dialog_attributes(message))
+
+    @client.track(payload)
+  end
+
+  # @param message [Facebook::Messenger::Incoming]
+  def outgoing(message)
+    payload = {
+      message: {
+        distinct_id: message.ids,
+        sent_at: message.at.to_f,
+        properties: {
+          text: message.text
+        },
+      },
+      creator: {
+        distinct_id: message.sender['id'],
+        type: 'bot'
+      }
+    }.deep_merge(dialog_attributes(message))
+
+    @client.track(payload)
+  end
+
+  private
+
+  # @param message []
+  def dialog_attributes(message)
+    {
+      message: {
+        platform: 'messenger',
+        provider: 'messenger',
+        mtype: 'text'
+      },
+      conversation: {
+        distinct_id: params.sender['id'] # Assumes 1 to 1 conversations
+      }
     }
-  }
-  Dialog.track(params)
+  end
+end
+
+# Create a Dialog API client
+client = Dialog.new({
+  api_token: ENV.fetch('DIALOG_API_TOKEN'),
+  bot_id: ENV.fetch('DIALOG_BOT_ID'),
+  on_error: Proc.new do |status, message, detail|
+    p [status, message, detail]
+  end
+})
+
+# Create a Dialog tracking helper
+dialog = DialogMessenger.new(client)
+
+Bot.on :message do |message|
+  dialog.incoming(message)
+
+  message.reply(text: 'Hello, human!')
+end
+
+Bot.on :delivery do |message|
+  dialog.outgoing(message)
 end
