@@ -6,8 +6,8 @@ require_relative './dialog'
 require 'facebook/messenger' # https://github.com/hyperoslo/facebook-messenger
 
 Facebook::Messenger.configure do |config|
-  config.access_token = ENV['FACEBOOK_ACCESS_TOKEN']
-  config.verify_token = ENV['FACEBOOK_SECRET_TOKEN']
+  config.access_token = ENV.fetch('FACEBOOK_ACCESS_TOKEN')
+  config.verify_token = ENV.fetch('FACEBOOK_SECRET_TOKEN')
 end
 
 include Facebook::Messenger
