@@ -1,8 +1,14 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    activesupport (5.0.0.1)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      i18n (~> 0.7)
+      minitest (~> 5.1)
+      tzinfo (~> 1.1)
     addressable (2.5.0)
       public_suffix (~> 2.0, >= 2.0.2)
+    concurrent-ruby (1.0.2)
     dialog-api (0.0.3)
       http (~> 2.0)
     domain_name (0.5.20161021)
@@ -23,10 +29,15 @@ GEM
     httparty (0.13.7)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
+    i18n (0.7.0)
     json (1.8.3)
+    minitest (5.9.1)
     multi_xml (0.5.5)
     public_suffix (2.0.4)
     rack (1.6.4)
+    thread_safe (0.3.5)
+    tzinfo (1.2.2)
+      thread_safe (~> 0.1)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.2)
@@ -35,6 +46,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activesupport (>= 5)
   dialog-api
   dotenv
   facebook-messenger

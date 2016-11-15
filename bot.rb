@@ -1,8 +1,12 @@
-require 'dotenv'
-Dotenv.load
+require 'active_support/core_ext/hash'
 
 require 'dialog-api'
-require 'facebook/messenger' # https://github.com/hyperoslo/facebook-messenger
+require 'facebook/messenger'
+
+
+# Load environment variables from .env
+require 'dotenv'
+Dotenv.load
 
 Facebook::Messenger.configure do |config|
   config.access_token = ENV.fetch('FACEBOOK_ACCESS_TOKEN')
