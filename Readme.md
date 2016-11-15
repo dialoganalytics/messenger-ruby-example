@@ -1,16 +1,28 @@
-# Facebook Messenger Ruby Bot
+# Facebook Messenger Ruby Chatbot
 
-An example facebook messenger ruby bot with [Dialog Analytics](https://dialoganalytics.com) integration. Built with [facebook-messenger](https://github.com/hyperoslo/facebook-messenger).
-
+An example Facebook Messenger Ruby chatbot integrated with [Dialog Analytics](https://dialoganalytics.com). Built with [hyperoslo/facebook-messenger](https://github.com/hyperoslo/facebook-messenger).
 
 ## Getting started
 
-Configure the bot with your credentials in `.env`:
+Clone this repository and run `bundle install`
+
+Create an account on https://app.dialoganalytics.com, grab your Dialog API token and bot ID.
+
+Set environment variables in `.env`:
 
 ```
 FACEBOOK_SECRET_TOKEN=...
 FACEBOOK_ACCESS_TOKEN=...
-DIALOG_TOKEN=...
+DIALOG_API_TOKEN=...
+DIALOG_BOT_ID=...
+```
+
+Gt your Facebook Messenger tokens at [](). Configure your application's webhook settings in the Facebook developer dashboard to the endpoint on which this server will be listening.
+
+__Local development:__ When developping locally, use a service like https://ngrok.com to expose a server running on your machine. This should be something like `https://f562681e.ngrok.io`
+
+```bash
+$ ngrok http 4567
 ```
 
 Start the bot:
@@ -19,11 +31,14 @@ Start the bot:
 $ bundle exec rackup
 ```
 
-In development, start a local tunel and configure your application's webhook settings in the facebook developer dashboard:
+In development, start a local tunel and :
 
 ```bash
 $ ngrok http 9292
 ```
 
-
 Go on [messenger.com](https://www.messenger.com), find your bot and start interacting with it.
+
+## Go further
+
+Read more on how to make the most out of the possibilities offered by Dialog here: https://dialoganalytics.com
