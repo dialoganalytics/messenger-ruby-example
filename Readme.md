@@ -2,6 +2,9 @@
 
 An example Facebook Messenger Ruby chatbot integrated with [Dialog Analytics](https://dialoganalytics.com). Built with [hyperoslo/facebook-messenger](https://github.com/hyperoslo/facebook-messenger).
 
+- [Dialog Documention](https://docs.dialoganalytics.com)
+- [Dialog API reference](https://docs.dialoganalytics.com/reference)
+
 ## Getting started
 
 Clone this repository and run `bundle install`
