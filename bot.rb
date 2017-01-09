@@ -1,17 +1,11 @@
-require 'active_support/core_ext/hash'
-
-require 'dialog-api'
-require 'facebook/messenger'
-
-
 # Load environment variables from .env
 require 'dotenv'
 Dotenv.load
 
-Facebook::Messenger.configure do |config|
-  config.access_token = ENV.fetch('FACEBOOK_ACCESS_TOKEN')
-  config.verify_token = ENV.fetch('FACEBOOK_SECRET_TOKEN')
-end
+require 'active_support/core_ext/hash'
+
+require 'dialog-api'
+require 'facebook/messenger'
 
 include Facebook::Messenger
 
